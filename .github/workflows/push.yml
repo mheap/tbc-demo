@@ -7,7 +7,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
       - name: Setup Deck
-        uses: kong/setup-deck
+        uses: kong/setup-deck@v1
         with:
           deck-version: 1.12.0
       - name: Download
