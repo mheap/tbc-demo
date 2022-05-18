@@ -1,10 +1,10 @@
 _id: spc_c02cb1b575d0412888729d0a623b5dcd
 type: ApiSpec
 parentId: wrk_784c86c4e8c441ada02c51393a0c63b7
-modified: 1652887815674
+modified: 1652888834095
 created: 1652886778138
 fileName: summit-demo
-contents: >
+contents: >+
   openapi: 3.0.0
 
   info:
@@ -23,6 +23,13 @@ contents: >
   paths:
     /products:
       get:
+        security: 
+          - BasicAuth: []
+        x-kong-plugin-rate-limiting:
+          enabled: true
+          config:
+            policy: local
+            minute: 2
         summary: List Kong products
         tags:
           - product
@@ -220,9 +227,15 @@ contents: >
           - type
           - title
           - instance
+    securitySchemes:
+      BasicAuth:
+        type: http
+        scheme: basic
   tags:
     - name: product
       description: List of products
     - name: session
       description: Session information
+     
+
 contentType: yaml
