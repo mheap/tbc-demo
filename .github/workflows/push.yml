@@ -6,7 +6,14 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
+      - name: Setup Deck
+        uses: kong/setup-deck@v1
+        with:
+          deck-version: 1.12.0
       - name: Download
         run: wget https://mheap-demos.s3.eu-west-2.amazonaws.com/inso-custom-rulesets
       - name: Run It
         run: chmod +x ./inso-custom-rulesets && ./inso-custom-rulesets lint spec summit-demo
+      - name: Generate config
+        run: ./inso-custom-rulesets generate config summit-demo > kong.yaml
+      - run: deck sync --select-tag OAS3_import --kong-addr "http://ec2-3-8-153-247.eu-west-2.compute.amazonaws.com:8001/"
