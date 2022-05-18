@@ -1,7 +1,7 @@
 _id: spc_c02cb1b575d0412888729d0a623b5dcd
 type: ApiSpec
 parentId: wrk_784c86c4e8c441ada02c51393a0c63b7
-modified: 1652887749836
+modified: 1652887815674
 created: 1652886778138
 fileName: summit-demo
 contents: >
@@ -216,7 +216,7 @@ contents: >
             type: string
           instance:
             type: string
-        requird:
+        required:
           - type
           - title
           - instance
